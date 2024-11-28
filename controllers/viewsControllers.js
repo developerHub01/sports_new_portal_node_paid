@@ -1,8 +1,9 @@
-const UserModel = require("../models/userModel");
 const { format } = require("date-fns");
 
 class ViewsControllers {
   async index(req, res) {
+    let { data } = req;
+
     const carouselSlides = [
       {
         id: 1,
@@ -235,72 +236,20 @@ class ViewsControllers {
       },
     ];
 
-    const sportsCategoryList = [
-      {
-        id: 1,
-        title: "Football",
-      },
-      {
-        id: 2,
-        title: "Basketball",
-      },
-      {
-        id: 3,
-        title: "Tennis",
-      },
-      {
-        id: 4,
-        title: "Cricket",
-      },
-      {
-        id: 5,
-        title: "Golf",
-      },
-      {
-        id: 6,
-        title: "Athletics",
-      },
-      {
-        id: 7,
-        title: "Boxing",
-      },
-      {
-        id: 8,
-        title: "Rugby",
-      },
-      {
-        id: 9,
-        title: "Motorsports",
-      },
-      {
-        id: 10,
-        title: "MMA",
-      },
-    ];
-
     const pagination = {
       currentPage: parseInt(req.query.page) || 1,
       perPage: parseInt(req.query.perPage) || 10,
       totalPage: 3,
     };
 
-    const data = {
+    data = {
+      ...data,
       newsList,
       carouselSlides,
-      user: null,
       pagination,
-      sportsCategoryList,
     };
 
-    if (!req.user || !req.user.userId) return res.render("pages/index", data);
-
-    try {
-      const userData = await UserModel.findById(req.user.userId);
-
-      return res.render("pages/index", { ...data, user: userData });
-    } catch (error) {
-      return res.render("pages/index", data);
-    }
+    return res.render("pages/index", data);
   }
 
   async login(req, res) {
@@ -316,19 +265,20 @@ class ViewsControllers {
   }
 
   async dashboard(req, res) {
-    const user = await UserModel.findById(req.user.userId);
+    let { data } = req;
 
-    res.render("pages/dashboard", { user });
+    res.render("pages/dashboard", data);
   }
 
   async profile(req, res) {
-    const user = await UserModel.findById(req.user.userId);
+    let { data } = req;
 
-    res.render("pages/profile", { user });
+    res.render("pages/profile", data);
   }
 
   async category(req, res) {
     const { categoryName } = req.params;
+    let { data } = req;
 
     const newsList = [
       {
@@ -521,49 +471,6 @@ class ViewsControllers {
         banner:
           "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp",
         link: "/news/20",
-      },
-    ];
-
-    const sportsCategoryList = [
-      {
-        id: 1,
-        title: "Football",
-      },
-      {
-        id: 2,
-        title: "Basketball",
-      },
-      {
-        id: 3,
-        title: "Tennis",
-      },
-      {
-        id: 4,
-        title: "Cricket",
-      },
-      {
-        id: 5,
-        title: "Golf",
-      },
-      {
-        id: 6,
-        title: "Athletics",
-      },
-      {
-        id: 7,
-        title: "Boxing",
-      },
-      {
-        id: 8,
-        title: "Rugby",
-      },
-      {
-        id: 9,
-        title: "Motorsports",
-      },
-      {
-        id: 10,
-        title: "MMA",
       },
     ];
 
@@ -573,28 +480,19 @@ class ViewsControllers {
       totalPage: 3,
     };
 
-    const data = {
+    data = {
+      ...data,
       categoryName,
       newsList,
-      user: null,
       pagination,
-      sportsCategoryList,
     };
 
-    if (!req.user || !req.user.userId)
-      return res.render("pages/category", data);
-
-    try {
-      const userData = await UserModel.findById(req.user.userId);
-
-      return res.render("pages/category", { ...data, user: userData });
-    } catch (error) {
-      return res.render("pages/category", data);
-    }
+    return res.render("pages/category", data);
   }
 
   async newsById(req, res) {
     const { newsId } = req.params;
+    let { data } = req;
 
     const newsList = [
       {
@@ -787,49 +685,6 @@ class ViewsControllers {
         banner:
           "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp",
         link: "/news/20",
-      },
-    ];
-
-    const sportsCategoryList = [
-      {
-        id: 1,
-        title: "Football",
-      },
-      {
-        id: 2,
-        title: "Basketball",
-      },
-      {
-        id: 3,
-        title: "Tennis",
-      },
-      {
-        id: 4,
-        title: "Cricket",
-      },
-      {
-        id: 5,
-        title: "Golf",
-      },
-      {
-        id: 6,
-        title: "Athletics",
-      },
-      {
-        id: 7,
-        title: "Boxing",
-      },
-      {
-        id: 8,
-        title: "Rugby",
-      },
-      {
-        id: 9,
-        title: "Motorsports",
-      },
-      {
-        id: 10,
-        title: "MMA",
       },
     ];
 
@@ -845,23 +700,14 @@ class ViewsControllers {
       categoryName: "football",
     };
 
-    const data = {
+    data = {
+      ...data,
       newsId,
       newsList,
-      user: null,
-      sportsCategoryList,
       article,
     };
 
-    if (!req.user || !req.user.userId) return res.render("pages/news", data);
-
-    try {
-      const userData = await UserModel.findById(req.user.userId);
-
-      return res.render("pages/news", { ...data, user: userData });
-    } catch (error) {
-      return res.render("pages/news", data);
-    }
+    return res.render("pages/news", data);
   }
 }
 
