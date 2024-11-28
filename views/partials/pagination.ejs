@@ -1,0 +1,12 @@
+<div class="mx-auto w-full flex justify-between items-center">
+  <% if (currentPage === 1) { %>
+    <a class="btn btn-primary pointer-events-none opacity-50" href="?page=">❮ Previous page</a>
+  <% }else { %>
+    <a class="btn btn-primary" href="?page=<%= currentPage-1 %>">❮ Previous page</a>
+  <% } %>
+  <% if (currentPage === totalPage) { %>
+    <a class="btn btn-primary pointer-events-none opacity-50" href="?page=">Next page ❯</a>
+  <% }else { %>
+    <a class="btn btn-primary" href="?page=<%= currentPage+1 %>">Next page ❯</a>
+  <% } %>
+</div>

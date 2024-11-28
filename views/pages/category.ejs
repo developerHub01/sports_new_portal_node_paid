@@ -1,0 +1,15 @@
+<% if (user) { %>
+  <%- include('../partials/navbar', {user, sportsCategoryList}); %>
+<% } else { %>
+  <%- include('../partials/navbar', {sportsCategoryList}); %>
+<% } %>
+
+<section class="w-full max-w-6xl mx-auto px-5 py-8 flex flex-col gap-8">
+  <h1 class="text-center text-4xl font-bold text-white capitalize"><%= categoryName %> News</h1>
+  <div class="w-full grid md:grid-cols-2 gap-8">
+    <% newsList.forEach(function(news, index){ %>
+      <%- include('../partials/news-card', news); %>
+    <% }); %>
+  </div>
+  <%- include('../partials/pagination', pagination); %>
+</section>
