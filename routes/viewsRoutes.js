@@ -17,4 +17,6 @@ router.get("/profile", authMiddleware, ViewsControllers.profile);
 
 router.get("/category/:categoryName", authMiddleware, ViewsControllers.category);
 
+router.get("/news/:newsId", authMiddleware, ViewsControllers.newsById);
+
 module.exports = router;
