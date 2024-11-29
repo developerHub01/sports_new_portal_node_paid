@@ -1,3 +1,49 @@
 <%- include("../partials/dashboard-wrapper-top") %>
-<h1 class="text-4xl bg-red-500 p-2">Admins</h1>
-<%- include("../partials/dashboard-wrapper-bottom") %>
+  <div class="w-full h-full flex flex-col gap-3">
+    <h1 class="text-4xl text-center font-bold text-white p-2">Admins</h1>
+    <div class="flex justify-center items-center">
+      <label for="addAdmin" class="btn btn-primary mx-auto">Add Admin</label>
+
+      <!-- Put this part before </body> tag -->
+      <input type="checkbox" id="addAdmin" class="modal-toggle" />
+      <div class="modal" role="dialog">
+        <div class="modal-box">
+          <h1 class="text-xl text-center font-bold text-white p-4">Add new admin</h1>
+          <form action="" class="flex flex-col gap-4">
+            <input type="email" placeholder="Enter user email" class="input input-bordered w-full" />
+            <button type="submit" class="btn btn-primary">Add now</button>
+          </form>
+        </div>
+        <label class="modal-backdrop" for="addAdmin">Close</label>
+      </div>
+    </div>
+    <div class="overflow-x-auto h-full">
+      <table class="table table-md md:table-lg table-pin-rows table-pin-cols h-auto max-h-full">
+        <thead class="text-white text-base shadow-lg border-b capitalize">
+          <tr>
+            <th></th>
+            <td>Full name</td>
+            <td>username</td>
+            <td>email</td>
+            <td>action</td>
+          </tr>
+        </thead>
+        <tbody class="text-sm">
+          <% for(let i=0; i<100; i++){ %>
+            <tr>
+              <th>
+                <%= i+1 %>
+              </th>
+              <td class="capitalize">name one</td>
+              <td>userNameOne</td>
+              <td>userNameOne@gmail.com</td>
+              <td>
+                <form action="" method="get" class="btn btn-sm btn-error">Remove</form>
+              </td>
+            </tr>
+            <% } %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <%- include("../partials/dashboard-wrapper-bottom") %>

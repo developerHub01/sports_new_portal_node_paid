@@ -1,8 +1,21 @@
 <%- include("../partials/dashboard-wrapper-top") %>
-  <h1 class="text-4xl bg-red-500 p-2">News list</h1>
 
   <section class="w-full max-w-6xl mx-auto px-5 py-8 flex flex-col gap-8">
     <h1 class="text-center text-4xl font-bold text-white">All News</h1>
+    <div class="w-full flex justify-between items-center gap-2">
+      <p class="text-lg">Filter by category</p>
+      <select class="select select-bordered w-full max-w-xs">
+        <option disabled selected>
+          <a href="/">All</a>
+        </option>
+        <option>
+          <a href="/">Han Solo</a>
+        </option>
+        <option>
+          <a href="/">Greedo</a>
+        </option>
+      </select>
+    </div>
     <div class="w-full grid md:grid-cols-2 gap-8">
       <% newsList.forEach(function(news, index){ %>
         <%- include('../partials/news-card', {...news, isDashboard: true}); %>

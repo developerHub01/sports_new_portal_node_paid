@@ -1,3 +1,39 @@
 <%- include("../partials/dashboard-wrapper-top") %>
-  <h1 class="text-4xl bg-red-500 p-2">Create News</h1>
-<%- include("../partials/dashboard-wrapper-bottom") %>
+  <div class="card bg-base-100 w-full max-w-4xl mx-auto shrink-0 shadow-2xl border border-primary">
+    <form class="card-body" action="" method="post">
+      <h1 class="text-4xl text-center font-bold text-white p-2">Create a News</h1>
+      <div class="form-control">
+        <label class="label">
+          <span class="label-text">Title</span>
+        </label>
+        <input placeholder="News title" class="input input-bordered" name="title" required />
+      </div>
+      <div class="form-control">
+        <label class="label">
+          <span class="label-text">Banner Url</span>
+        </label>
+        <input placeholder="Banner url" class="input input-bordered" name="banner" required />
+      </div>
+      <div class="form-control">
+        <label class="label">
+          <span class="label-text">Select Category</span>
+        </label>
+        <select class="select select-bordered w-full" name="category">
+          <option disabled selected>Who shot first?</option>
+          <option>Han Solo</option>
+          <option>Greedo</option>
+        </select>
+      </div>
+      <div class="form-control">
+        <label class="label">
+          <span class="label-text">News Description</span>
+        </label>
+        <textarea class="textarea textarea-bordered max-h-96 min-h-72" placeholder="Write news description"
+          required></textarea>
+      </div>
+      <div class="form-control mt-6">
+        <button class="btn btn-primary" type="submit">Submit News</button>
+      </div>
+    </form>
+  </div>
+  <%- include("../partials/dashboard-wrapper-bottom") %>

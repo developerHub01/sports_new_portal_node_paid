@@ -14,7 +14,7 @@
     </p>
     <div class="card-actions">
       <a href="<%= link %>" class="btn btn-primary">Read now</a>
-      <% if (isDashboard) { %>
+      <% if (typeof isDashboard !== "undefined" && isDashboard) { %>
         <a href="<%= link %>" class="btn btn-success">Edit</a>
         <a href="<%= link %>" class="btn btn-error">Delete</a>
       <% } %>

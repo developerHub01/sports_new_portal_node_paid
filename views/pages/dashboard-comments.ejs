@@ -1,3 +1,15 @@
 <%- include("../partials/dashboard-wrapper-top") %>
-  <h1 class="text-4xl bg-red-500 p-2">Dashboard Comments</h1>
-<%- include("../partials/dashboard-wrapper-bottom") %>
+  <div class="w-full h-full flex flex-col gap-3 pb-5">
+    <h1 class="text-4xl text-center font-bold text-white p-2">Comments</h1>
+    <div class="flex flex-col gap-6">
+      <% for(let i=0; i<100; i++){ %>
+        <div class="shadow-xl">
+          <div class="pb-2">
+            <a href="/" class="text-lg text-white font-semibold underline">News Title goes here</a>
+          </div>
+          <%- include("../partials/comment") %>
+        </div>
+        <% } %>
+    </div>
+  </div>
+  <%- include("../partials/dashboard-wrapper-bottom") %>
