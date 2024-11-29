@@ -2,6 +2,7 @@ const express = require("express");
 const authRoutes = require("./routes/authRoutes");
 const viewsRoutes = require("./routes/viewsRoutes");
 const profileRoutes = require("./routes/profileRoutes");
+const dashboardViewsRoutes = require("./routes/dashboardViewsRoutes");
 const cookieParser = require("cookie-parser");
 const path = require("path");
 const connectDB = require("./db/connect");
@@ -29,6 +30,7 @@ app.set("views", path.join(__dirname, "views")); // Views folder is correctly se
 app.use("/", viewsRoutes);
 app.use("/auth", authRoutes);
 app.use("/profile", profileRoutes);
+app.use("/dashboard", dashboardViewsRoutes);
 
 // Start the server
 app.listen(3000, () => console.log("Server is running at port 3000"));

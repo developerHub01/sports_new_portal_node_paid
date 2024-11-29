@@ -26,13 +26,6 @@ router.get(
 );
 
 router.get(
-  "/dashboard",
-  authMiddleware,
-  navDataCollectorMiddleware,
-  ViewsControllers.dashboard
-);
-
-router.get(
   "/profile",
   authMiddleware,
   navDataCollectorMiddleware,
