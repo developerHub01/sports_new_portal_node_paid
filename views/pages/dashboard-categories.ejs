@@ -9,8 +9,8 @@
       <div class="modal" role="dialog">
         <div class="modal-box">
           <h1 class="text-xl text-center font-bold text-white p-4">Add new category</h1>
-          <form action="" class="flex flex-col gap-4">
-            <input type="text" placeholder="Enter category name" class="input input-bordered w-full" />
+          <form action="/api/category" method="post" class="flex flex-col gap-4">
+            <input type="text" placeholder="Enter category name" name="name" class="input input-bordered w-full" />
             <button type="submit" class="btn btn-primary">Add now</button>
           </form>
         </div>
@@ -29,37 +29,43 @@
           </tr>
         </thead>
         <tbody class="text-sm">
-          <% for(let i=0; i<100; i++){ %>
+          <% categories.forEach(function({_id: id, name, newsCount}, index){ %>
             <tr>
               <th>
-                <%= i+1 %>
+                <%= index+1 %>
               </th>
-              <td class="capitalize">category-<%= i+1 %>
+              <td class="capitalize">
+                <%= name %>
               </td>
-              <td>1</td>
+              <td>
+                <%= newsCount %>
+              </td>
               <td>
                 <div class="flex justify-center items-center">
-                  <label for="updateCategory-<%= i+1 %>" class="btn btn-sm btn-primary mx-auto">Update Category</label>
+                  <label for="updateCategory-<%= id %>" class="btn btn-sm btn-primary mx-auto">Update Category</label>
 
                   <!-- Put this part before </body> tag -->
-                  <input type="checkbox" id="updateCategory-<%= i+1 %>" class="modal-toggle" />
+                  <input type="checkbox" id="updateCategory-<%= id %>" class="modal-toggle" />
                   <div class="modal" role="dialog">
                     <div class="modal-box">
                       <h1 class="text-xl text-center font-bold text-white p-4">Update category</h1>
-                      <form action="" class="flex flex-col gap-4">
-                        <input type="text" placeholder="Category name" class="input input-bordered w-full" />
+                      <form action="/api/category/update/<%= id%>" method="post" class="flex flex-col gap-4">
+                        <input type="text" placeholder="Category name" name="name" class="input input-bordered w-full"
+                          value="<%= name %>" />
                         <button type="submit" class="btn btn-primary">Update</button>
                       </form>
                     </div>
-                    <label class="modal-backdrop" for="updateCategory-<%= i+1 %>">Close</label>
+                    <label class="modal-backdrop" for="updateCategory-<%= id %>">Close</label>
                   </div>
                 </div>
               </td>
               <td>
-                <form action="" method="get" class="btn btn-sm btn-error">Remove</form>
+                <form action="/api/category/delete/<%= id%>" method="get">
+                  <button class="btn btn-sm btn-error" type="submit">Remove</button>
+                </form>
               </td>
             </tr>
-            <% } %>
+            <% }); %>
         </tbody>
       </table>
     </div>

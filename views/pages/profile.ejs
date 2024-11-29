@@ -11,7 +11,7 @@
       <h2 class="card-title text-center underline pb-2">User Profile</h2>
 
       <!-- Editable Profile Information -->
-      <form method="post" action="/profile/update" class="space-y-4">
+      <form method="post" action="/api/profile/update" class="space-y-4">
         <div class="space-y-2">
           <label class="font-medium text-lg" for="fullName">Full Name</label>
           <input name="fullName" id="fullName" type="text" class="input input-bordered w-full"
@@ -41,7 +41,7 @@
     <!-- Password Change Form -->
     <div class="card-body shadow-xl border rounded-md border-primary">
       <h3 class="font-medium text-xl underline pb-2">Change Password</h3>
-      <form method="POST" action="/profile/change-password" class="space-y-4">
+      <form method="POST" action="/api/profile/change-password" class="space-y-4">
         <div class="space-y-2">
           <label class="font-medium text-lg" for="currentPassword">Current Password</label>
           <input name="currentPassword" id="currentPassword" type="password"

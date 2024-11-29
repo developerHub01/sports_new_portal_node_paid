@@ -1,3 +1,5 @@
+const CategoryControllers = require("./categoryControllers");
+
 class DashboardViewsControllers {
   async dashboard(req, res) {
     res.render("pages/dashboard");
@@ -224,7 +226,9 @@ class DashboardViewsControllers {
   }
 
   async categories(req, res) {
-    res.render("pages/dashboard-categories");
+    const categories = await CategoryControllers.categoriesWithNumberOfNews();
+
+    res.render("pages/dashboard-categories", { categories });
   }
 
   async users(req, res) {
