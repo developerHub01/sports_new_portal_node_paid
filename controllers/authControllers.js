@@ -4,32 +4,6 @@ const UserModel = require("../models/userModel");
 const Constant = require("../constant");
 
 class AuthControllers {
-  async register(req, res) {
-    try {
-      const { fullName, userName, email, password } = req.body;
-
-      if (req.user) return res.redirect("/");
-
-      // Hash the password
-      const hashedPassword = await bcrypt.hash(password, 10);
-
-      // Create a new user
-      const newUser = new UserModel({
-        fullName,
-        userName,
-        email,
-        password: hashedPassword,
-      });
-
-      await newUser.save();
-
-      res.redirect("/login"); // Redirect to login after successful registration
-    } catch (err) {
-      console.error(err);
-      res.status(500).send("Server error");
-    }
-  }
-
   async login(req, res) {
     try {
       const { email, password } = req.body;
@@ -37,7 +11,7 @@ class AuthControllers {
       if (req.user) return res.redirect("/");
 
       // Find the user by email
-      const user = await UserModel.findOne({ email });
+      const user = await UserModel.findOne({ email }).select("password");
       if (!user) {
         return res.status(400).send("Invalid email or password");
       }

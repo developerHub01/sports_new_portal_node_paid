@@ -4,24 +4,23 @@
     <h1 class="text-center text-4xl font-bold text-white">All News</h1>
     <div class="w-full flex justify-between items-center gap-2">
       <p class="text-lg">Filter by category</p>
-      <select class="select select-bordered w-full max-w-xs">
-        <option disabled selected>
-          <a href="/">All</a>
-        </option>
-        <option>
-          <a href="/">Han Solo</a>
-        </option>
-        <option>
-          <a href="/">Greedo</a>
-        </option>
-      </select>
+      <div class="dropdown dropdown-end">
+        <div tabindex="0" role="button" class="btn m-1">Category</div>
+        <ul tabindex="0" class="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow-xl">
+          <li data-category="all" class="btn btn-ghost py-1 items-start select-none cursor-pointer">All</li>
+          <% categories.forEach(function({_id: id, name}, index){ %>
+            <li data-category="<%= name%>" class="btn btn-ghost py-1 items-start select-none cursor-pointer">
+              <%= name %>
+            </li>
+            <% }); %>
+        </ul>
+      </div>
     </div>
     <div class="w-full grid md:grid-cols-2 gap-8">
       <% newsList.forEach(function(news, index){ %>
         <%- include('../partials/news-card', {...news, isDashboard: true}); %>
           <% }); %>
     </div>
-    <%- include('../partials/pagination', pagination); %>
   </section>
 
   <%- include("../partials/dashboard-wrapper-bottom") %>

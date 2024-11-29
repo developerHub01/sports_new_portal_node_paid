@@ -19,9 +19,10 @@
           <span class="label-text">Select Category</span>
         </label>
         <select class="select select-bordered w-full" name="category">
-          <option disabled selected>Who shot first?</option>
-          <option>Han Solo</option>
-          <option>Greedo</option>
+          <% categories.forEach(function({_id: id, name}, index){ %>
+            <option value="<%= id %>" selected=<%=index===0 %> ><%= name %>
+            </option>
+            <% }); %>
         </select>
       </div>
       <div class="form-control">
@@ -29,7 +30,7 @@
           <span class="label-text">News Description</span>
         </label>
         <textarea class="textarea textarea-bordered max-h-96 min-h-72" placeholder="Write news description"
-          required></textarea>
+          name="content" required></textarea>
       </div>
       <div class="form-control mt-6">
         <button class="btn btn-primary" type="submit">Submit News</button>

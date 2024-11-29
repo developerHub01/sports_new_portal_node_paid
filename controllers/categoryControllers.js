@@ -18,7 +18,9 @@ class CategoryControllers {
 
   async create(req, res) {
     try {
-      const { name } = req.body;
+      let { name } = req.body;
+
+      name = name.split(" ").join("-");
 
       const categories = await CategoryServices.create(name);
 

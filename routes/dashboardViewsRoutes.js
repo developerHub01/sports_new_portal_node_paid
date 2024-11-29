@@ -12,7 +12,7 @@ router.get(
   DashboardViewsControllers.createNews
 );
 
-router.get("/edit-news", authMiddleware, DashboardViewsControllers.editNews);
+router.get("/edit-news/:id", authMiddleware, DashboardViewsControllers.editNews);
 
 router.get("/news", authMiddleware, DashboardViewsControllers.news);
 

@@ -3,6 +3,7 @@ const authRoutes = require("./routes/authRoutes");
 const viewsRoutes = require("./routes/viewsRoutes");
 const profileRoutes = require("./routes/profileRoutes");
 const newsRoutes = require("./routes/newsRoutes");
+const userRoutes = require("./routes/userRoutes");
 const categoryRoutes = require("./routes/categoryRoutes");
 const dashboardViewsRoutes = require("./routes/dashboardViewsRoutes");
 const cookieParser = require("cookie-parser");
@@ -34,6 +35,7 @@ app.use("/dashboard", dashboardViewsRoutes);
 app.use("/api/profile", profileRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/news", newsRoutes);
+app.use("/api/user", userRoutes);
 app.use("/api/category", categoryRoutes);
 
 // Start the server

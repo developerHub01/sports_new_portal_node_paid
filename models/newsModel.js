@@ -13,11 +13,11 @@ const newsSchema = new mongoose.Schema(
       required: true,
       minlength: 3,
     },
-    image_url: {
+    banner: {
       type: String,
       required: true,
     },
-    category_id: {
+    category: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Category",
       required: true,

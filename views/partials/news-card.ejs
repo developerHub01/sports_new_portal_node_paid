@@ -1,8 +1,8 @@
-<div class="card bg-base-100 w-full shadow-xl rounded-md">
+<div class="card bg-base-100 w-full shadow-xl rounded-md border border-primary">
   <figure class="aspect-video relative">
     <img src=<%=banner %> alt="Shoes" class="size-full object-cover select-none" />
-    <a href="/category/<%= categoryName.toLowerCase() %>" class="btn btn-primary absolute top-2 right-2 btn-sm">
-      <%= categoryName %>
+    <a href="/category/<%= category.toLowerCase() %>" class="btn btn-primary absolute top-2 right-2 btn-sm">
+      <%= category %>
     </a>
   </figure>
   <div class="card-body text-white">
@@ -10,14 +10,16 @@
       <%= title %>
     </h2>
     <p class="line-clamp-3">
-      <%= description %>
+      <%= content %>
     </p>
     <div class="card-actions">
-      <a href="<%= link %>" class="btn btn-primary">Read now</a>
-      <% if (typeof isDashboard !== "undefined" && isDashboard) { %>
-        <a href="<%= link %>" class="btn btn-success">Edit</a>
-        <a href="<%= link %>" class="btn btn-error">Delete</a>
-      <% } %>
+      <a href="/news/<%= _id %>" class="btn btn-primary">Read now</a>
+      <% if (typeof isDashboard !=="undefined" && isDashboard) { %>
+        <a href="/dashboard/edit-news/<%= _id %>" class="btn btn-success">Edit</a>
+        <form action="/api/news/delete/<%= _id %>" method="get">
+          <a class="btn btn-error" type="submit">Delete</a>
+        </form>
+        <% } %>
     </div>
   </div>
 </div>

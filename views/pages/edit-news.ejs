@@ -1,35 +1,44 @@
 <%- include("../partials/dashboard-wrapper-top") %>
   <div class="card bg-base-100 w-full max-w-4xl mx-auto shrink-0 shadow-2xl border border-primary">
-    <form class="card-body" action="" method="post">
+    <form class="card-body" action="/api/news/update/<%= news._id%>" method="post">
       <h1 class="text-4xl text-center font-bold text-white p-2">Edit News</h1>
       <div class="form-control">
         <label class="label">
           <span class="label-text">Title</span>
         </label>
-        <input placeholder="News title" class="input input-bordered" name="title" required />
+        <input placeholder="News title" class="input input-bordered" name="title" required value="<%= news.title %>" />
       </div>
       <div class="form-control">
         <label class="label">
           <span class="label-text">Banner Url</span>
         </label>
-        <input placeholder="Banner url" class="input input-bordered" name="banner" required />
+        <input placeholder="Banner url" class="input input-bordered" name="banner" required
+          value="<%= news.banner %>" />
       </div>
       <div class="form-control">
         <label class="label">
           <span class="label-text">Select Category</span>
         </label>
         <select class="select select-bordered w-full" name="category">
-          <option disabled selected>Who shot first?</option>
-          <option>Han Solo</option>
-          <option>Greedo</option>
+          <% categories.forEach(function({_id: id, name}, index){ %>
+            <% if(name===news.category.name){%>
+              <option value="<%= id %>" selected>
+                <%= name %>
+              </option>
+              <% }else{%>
+                <option value="<%= id %>">
+                  <%= name %>
+                </option>
+                <% }%>
+                  <% }); %>
         </select>
       </div>
       <div class="form-control">
         <label class="label">
           <span class="label-text">News Description</span>
         </label>
-        <textarea class="textarea textarea-bordered max-h-96 min-h-72" placeholder="Write news description"
-          required></textarea>
+        <textarea class="textarea textarea-bordered max-h-96 min-h-72" placeholder="Write news description" required
+          name="content"><%= news.content %></textarea>
       </div>
       <div class="form-control mt-6">
         <button class="btn btn-primary" type="submit">Submit News</button>
