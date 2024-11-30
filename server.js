@@ -6,6 +6,7 @@ const newsRoutes = require("./routes/newsRoutes");
 const userRoutes = require("./routes/userRoutes");
 const categoryRoutes = require("./routes/categoryRoutes");
 const commentRoutes = require("./routes/commentRoutes");
+const aboutUsRoute = require("./routes/aboutUsRoute");
 const dashboardViewsRoutes = require("./routes/dashboardViewsRoutes");
 const cookieParser = require("cookie-parser");
 const path = require("path");
@@ -42,6 +43,9 @@ app.use("/api/news", newsRoutes);
 app.use("/api/user", userRoutes);
 app.use("/api/category", categoryRoutes);
 app.use("/api/comment", commentRoutes);
+app.use("/api/about-us", aboutUsRoute);
 
 // Start the server
-app.listen(3000, () => console.log("Server is running at port 3000"));
+const server = app.listen(0, () => {
+  console.log(`Server is running at port ${server.address().port}`);
+});

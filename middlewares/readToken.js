@@ -4,7 +4,7 @@ const UserModel = require("../models/userModel");
 
 const readTokenMiddleware = async (req, res, next) => {
   const token = req.cookies.authToken;
-
+  
   if (!token) {
     return next();
   }

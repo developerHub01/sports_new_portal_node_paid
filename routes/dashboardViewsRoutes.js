@@ -14,6 +14,13 @@ router.get(
 );
 
 router.get(
+  "/about-us",
+  authMiddleware,
+  adminOnlyMiddleware,
+  DashboardViewsControllers.aboutUs
+);
+
+router.get(
   "/create-news",
   authMiddleware,
   adminOnlyMiddleware,

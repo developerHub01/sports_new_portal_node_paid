@@ -17,7 +17,7 @@
       <% if (typeof isDashboard !=="undefined" && isDashboard) { %>
         <a href="/dashboard/edit-news/<%= _id %>" class="btn btn-success">Edit</a>
         <form action="/api/news/delete/<%= _id %>" method="get">
-          <a class="btn btn-error" type="submit">Delete</a>
+          <button class="btn btn-error" type="submit">Delete</button>
         </form>
         <% } %>
     </div>

@@ -9,6 +9,6 @@ router.post("/", authMiddleware, NewsControllers.create);
 
 router.post("/update/:id", authMiddleware, NewsControllers.update);
 
-router.post("/delete/:id", authMiddleware, NewsControllers.delete);
+router.get("/delete/:id", authMiddleware, NewsControllers.delete);
 
 module.exports = router;

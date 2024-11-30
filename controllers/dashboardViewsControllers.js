@@ -6,6 +6,7 @@ const CategoryServices = require("../services/categoryServices");
 const CommentServices = require("../services/commentServices");
 const NewsServices = require("../services/newsServices");
 const UserServices = require("../services/userServices");
+const AboutUsServices = require("../services/aboutUsServices");
 
 class DashboardViewsControllers {
   async dashboard(req, res) {
@@ -29,6 +30,20 @@ class DashboardViewsControllers {
     };
 
     res.render("pages/dashboard", data);
+  }
+
+  async aboutUs(req, res) {
+    const { role } = req.user;
+    const aboutUsData = await AboutUsServices.index();
+
+    console.log(aboutUsData);
+
+    const data = {
+      role,
+      aboutUsData,
+    };
+
+    res.render("pages/edit-about-us", data);
   }
 
   async createNews(req, res) {

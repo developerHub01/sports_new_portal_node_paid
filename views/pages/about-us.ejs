@@ -1,0 +1,44 @@
+<% if (user) { %>
+  <%- include('../partials/navbar', {user, sportsCategoryList}); %>
+    <% } else { %>
+      <%- include('../partials/navbar', {sportsCategoryList}); %>
+        <% } %>
+
+          <div class="relative flex items-center justify-center overflow-hidden">
+            <div
+              class="relative mx-auto h-full px-4 pb-20 md:pb-10 sm:max-w-xl md:max-w-full md:px-24 lg:max-w-screen-xl lg:px-8">
+              <div class="flex flex-col items-center justify-between lg:flex-row py-16">
+                <div class="relative">
+                  <div class="lg:max-w-xl lg:pr-5 relative">
+                    <p class="flex text-sm uppercase text-g1">
+                      About Us
+                    </p>
+                    <h2
+                      class="mb-6 max-w-lg text-5xl font-light leading-snug tracking-tight text-g1 sm:text-7xl sm:leading-snug">
+                      <%= aboutUsData.title%>
+                        <span class="my-1 inline-block text-5xl py-2 bg-primary text-white px-4 font-bold">
+                          <%= aboutUsData.highlight%>
+                        </span>
+                    </h2>
+                    <p class="text-base">
+                      <%= aboutUsData.description%>
+                    </p>
+                    <div class="mt-10 flex flex-col items-center md:flex-row">
+                      <a href="<%= aboutUsData.buttonLink%>"
+                        class="mb-3 inline-flex h-12 w-full items-center justify-center rounded bg-primary px-6 font-medium tracking-wide text-white shadow-md transition hover:bg-blue-800 focus:outline-none md:mr-4 md:mb-0 md:w-auto">
+                        <%= aboutUsData.buttonText%>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="relative hidden lg:ml-32 lg:block lg:w-1/2">
+                  <div
+                    class="abg-orange-400 mx-auto w-fit overflow-hidden rounded-[6rem] rounded-br-none rounded-tl-none">
+                    <img src="<%= aboutUsData.imageUrl%>" alt="Sports Highlights">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>

@@ -66,7 +66,7 @@ class NewsControllers {
 
       if (!news || typeof news === "string") throw new Error(news);
 
-      res.redirect("/dashboard");
+      res.redirect("/dashboard/news");
     } catch (err) {
       console.error("Error creating news:", err);
       res.status(500).send("Internal Server Error");

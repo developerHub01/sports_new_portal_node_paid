@@ -1,6 +1,5 @@
 const express = require("express");
 const { authMiddleware } = require("../middlewares/authMiddleware");
-const { readTokenMiddleware } = require("../middlewares/readToken");
 const ViewsControllers = require("../controllers/viewsControllers");
 const { navDataCollectorMiddleware } = require("../middlewares/navDataCollector");
 
@@ -39,6 +38,12 @@ router.get(
   "/news/:newsId",
   navDataCollectorMiddleware,
   ViewsControllers.newsById
+);
+
+router.get(
+  "/about-us",
+  navDataCollectorMiddleware,
+  ViewsControllers.aboutUs
 );
 
 module.exports = router;

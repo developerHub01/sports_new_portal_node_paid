@@ -7,7 +7,7 @@ class AuthControllers {
   async login(req, res) {
     try {
       const { email, password } = req.body;
-
+      
       if (req.user) return res.redirect("/");
 
       // Find the user by email

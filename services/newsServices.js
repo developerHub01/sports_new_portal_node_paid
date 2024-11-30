@@ -78,8 +78,6 @@ class NewsServices {
       return "Server error";
     }
   }
-
-  async delete(id) {}
 }
 
 module.exports = new NewsServices();

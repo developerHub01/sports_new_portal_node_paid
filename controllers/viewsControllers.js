@@ -2,9 +2,12 @@ const { format } = require("date-fns");
 const NewsServices = require("../services/newsServices");
 const CommentServices = require("../services/commentServices");
 const UserModel = require("../models/userModel");
+const AboutUsServices = require("../services/aboutUsServices");
 
 class ViewsControllers {
   async index(req, res) {
+    console.log("====================");
+
     let { data } = req;
     const newsList = await NewsServices.index();
 
@@ -98,6 +101,19 @@ class ViewsControllers {
     };
 
     return res.render("pages/news", data);
+  }
+
+  async aboutUs(req, res) {
+    let { data } = req;
+
+    const aboutUsData = await AboutUsServices.index();
+
+    data = {
+      ...data,
+      aboutUsData,
+    };
+
+    return res.render("pages/about-us", data);
   }
 }
 

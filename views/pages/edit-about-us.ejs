@@ -1,0 +1,53 @@
+<%- include("../partials/dashboard-wrapper-top") %>
+  <div class="card bg-base-100 w-full max-w-4xl mx-auto shrink-0 shadow-2xl border border-primary">
+    <form class="card-body" action="/api/about-us/update" method="post">
+      <h1 class="text-4xl text-center font-bold text-white p-2">About us</h1>
+      <div class="form-control">
+        <label class="label">
+          <span class="label-text">Title</span>
+        </label>
+        <input placeholder="Title" class="input input-bordered" name="title" required value="<%=aboutUsData.title%>" />
+      </div>
+      <div class="form-control">
+        <label class="label">
+          <span class="label-text">Highlight</span>
+        </label>
+        <input placeholder="Highlight" class="input input-bordered" name="highlight" required
+          value="<%=aboutUsData.highlight%>" />
+      </div>
+      <div class="form-control">
+        <label class="label">
+          <span class="label-text">Button Text</span>
+        </label>
+        <input placeholder="Button Text" class="input input-bordered" name="buttonText" required
+          value="<%=aboutUsData.buttonText%>" />
+      </div>
+      <div class="form-control">
+        <label class="label">
+          <span class="label-text">Button Link</span>
+        </label>
+        <input placeholder="Button Link" class="input input-bordered" name="buttonLink" required
+          value="<%=aboutUsData.buttonLink%>" />
+      </div>
+      <div class="form-control">
+        <label class="label">
+          <span class="label-text">Image Url</span>
+        </label>
+        <input placeholder="Image Url" class="input input-bordered" name="imageUrl" required
+          value="<%=aboutUsData.imageUrl%>" />
+      </div>
+      <div class="form-control">
+        <label class="label">
+          <span class="label-text">Description</span>
+        </label>
+        <textarea class="textarea textarea-bordered max-h-96 min-h-72" placeholder="Description" name="description"
+          required>
+<%= aboutUsData.description%>
+        </textarea>
+      </div>
+      <div class="form-control mt-6">
+        <button class="btn btn-primary" type="submit">Save Changes</button>
+      </div>
+    </form>
+  </div>
+  <%- include("../partials/dashboard-wrapper-bottom") %>
