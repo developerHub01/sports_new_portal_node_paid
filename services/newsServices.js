@@ -1,4 +1,5 @@
 const NewsModel = require("../models/newsModel");
+const CategoryModel = require("../models/categoryModel");
 
 class NewsServices {
   async index() {
@@ -21,9 +22,27 @@ class NewsServices {
 
   async newsById(id) {
     try {
-      return await NewsModel.findById(id).populate({
+      return await NewsModel.findById(id)
+        .populate({
+          path: "category",
+          select: "-_id name",
+        })
+        .lean();
+    } catch (e) {
+      return [];
+    }
+  }
+
+  async newsByCategory(category) {
+    try {
+      const categoryData =
+        (await CategoryModel.findOne({
+          name: category,
+        }).select("_id")) || {};
+
+      return await NewsModel.find({ category: categoryData._id }).populate({
         path: "category",
-        select: "-_id name",
+        select: "-_id name", // Only include the `name` field from the populated category
       });
     } catch (e) {
       return [];

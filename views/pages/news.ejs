@@ -1,65 +1,40 @@
 <% if (user) { %>
   <%- include('../partials/navbar', {user, sportsCategoryList}); %>
-<% } else { %>
-  <%- include('../partials/navbar', {sportsCategoryList}); %>
-<% } %>
+    <% } else { %>
+      <%- include('../partials/navbar', {sportsCategoryList}); %>
+        <% } %>
 
-<%- include('../partials/news-hero', article); %>
+          <%- include('../partials/news-hero', {title: news.title, banner: news.banner, category: news.category,
+            createdAt : news.createdAt , updatedAt : news.updatedAt }); %>
 
-<!-- Article Section -->
-<section class="max-w-4xl mx-auto py-10 px-5">
-  <!-- Article Content -->
-  <article class="prose lg:prose-xl max-w-none">
-    <p>
-      In a thrilling finale to the season, Team A emerged victorious after a nail-biting match against Team B. The
-      championship saw one of the most exciting games in recent history, with fans on the edge of their seats until
-      the very last minute.
-    </p>
-    <p>
-      The game started with Team A taking the lead early on, thanks to a brilliant strike by their star player. Team
-      B, however, retaliated quickly and equalized before halftime. The second half saw intense back-and-forth action,
-      with both teams creating numerous opportunities.
-    </p>
-    <p>
-      The decisive moment came in the 89th minute when Team A's captain scored a spectacular goal, sealing the victory
-      for his team and sending fans into a frenzy.
-    </p>
-    <blockquote>
-      "This victory is for all our fans. They’ve supported us throughout the season, and we couldn’t have done it
-      without them," said Team A's captain during the post-match interview.
-    </blockquote>
-    <p>
-      As celebrations erupted across the city, fans and players alike reflected on an unforgettable season. Team A's
-      coach lauded his players for their resilience and teamwork, setting the stage for an even brighter future for
-      the club.
-    </p>
-  </article>
-</section>
+            <!-- news Section -->
+            <section class="max-w-4xl mx-auto py-10 px-5">
+              <!-- news Content -->
+              <news class="prose lg:prose-xl max-w-none">
+                <p>
+                  <%= news.content %>
+                </p>
+              </news>
+            </section>
 
-<div class="w-full max-w-3xl mx-auto py-10 px-5">
-  <div class="w-full flex justify-between items-center gap-2 pb-5">
-    <h1 class="text-2xl">10 Comments</h1>
-    <button class="btn" onclick="commentDialog.showModal()">Write Comment</button>
-    <!-- Open the modal using ID.showModal() method -->
-    <dialog id="commentDialog" class="modal">
-      <form class="modal-box">
-        <h1 class="text-xl pb-6 text-center font-bold">Write your comment</h1>
-        <div class="form-control">
-          <textarea class="textarea textarea-bordered max-h-60 min-h-36" placeholder="Write your comment" required></textarea>
-        </div>
-        <div class="form-control mt-6">
-          <button class="btn btn-primary">Comment</button>
-        </div>
-      </form>
-      <form method="dialog" class="modal-backdrop">
-        <button>close</button>
-      </form>
-    </dialog>
-  </div>
-  <div class="flex flex-col gap-2">
-    <%- include('../partials/comment'); %>
-    <%- include('../partials/comment'); %>
-    <%- include('../partials/comment'); %>
-    <%- include('../partials/comment'); %>
-  </div>
-</div>
+            <div class="w-full max-w-3xl mx-auto py-10 px-5 flex flex-col gap-4">
+              <div class="w-full flex justify-between items-center gap-2 pb-5">
+                <h1 class="text-2xl">
+                  <%= comments.length %> Comments
+                </h1>
+              </div>
+              <% if (user) { %>
+                <form action="/api/comment" method="post" class="space-y-2">
+                  <input type="text" value="<%= news._id %>" name="news" hidden>
+                  <textarea class="textarea textarea-bordered w-full h-36 resize-none text-base"
+                    placeholder="Write comment" name="content" required></textarea>
+                  <button type="submit" class="btn btn-primary">Post comment</button>
+                </form>
+                <% }%>
+
+                  <div class="flex flex-col gap-6">
+                    <% comments.forEach(function({_id: id, content, user, news, isDeleteable}){ %>
+                      <%- include("../partials/comment", {id, user, content, isDeleteable, isDashboard: false}) %>
+                        <% }); %>
+                  </div>
+            </div>

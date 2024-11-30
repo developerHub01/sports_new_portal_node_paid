@@ -44,7 +44,7 @@
                       <a href="/profile" class="justify-between"> Profile </a>
                     </li>
                     <% if (["admin", "super-admin" ].includes(user.role)) {%>
-                      <li><a>Dashboard</a></li>
+                      <li><a href="/dashboard">Dashboard</a></li>
                       <% } %>
                         <li><a href="/api/auth/logout">Logout</a></li>
                         </ul>

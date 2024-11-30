@@ -5,11 +5,13 @@ const profileRoutes = require("./routes/profileRoutes");
 const newsRoutes = require("./routes/newsRoutes");
 const userRoutes = require("./routes/userRoutes");
 const categoryRoutes = require("./routes/categoryRoutes");
+const commentRoutes = require("./routes/commentRoutes");
 const dashboardViewsRoutes = require("./routes/dashboardViewsRoutes");
 const cookieParser = require("cookie-parser");
 const path = require("path");
 const connectDB = require("./db/connect");
 const partials = require("express-partials");
+const { readTokenMiddleware } = require("./middlewares/readToken");
 
 const app = express();
 
@@ -29,6 +31,8 @@ app.set("view engine", "ejs");
 app.use(partials());
 app.set("views", path.join(__dirname, "views")); // Views folder is correctly set
 
+app.use(readTokenMiddleware);
+
 // Use the routes for views and authentication
 app.use("/", viewsRoutes);
 app.use("/dashboard", dashboardViewsRoutes);
@@ -37,6 +41,7 @@ app.use("/api/auth", authRoutes);
 app.use("/api/news", newsRoutes);
 app.use("/api/user", userRoutes);
 app.use("/api/category", categoryRoutes);
+app.use("/api/comment", commentRoutes);
 
 // Start the server
 app.listen(3000, () => console.log("Server is running at port 3000"));

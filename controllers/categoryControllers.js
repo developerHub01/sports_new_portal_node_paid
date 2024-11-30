@@ -1,5 +1,3 @@
-const CategoryModel = require("../models/categoryModel");
-const NewsModel = require("../models/newsModel");
 const CategoryServices = require("../services/categoryServices");
 
 class CategoryControllers {
@@ -54,8 +52,6 @@ class CategoryControllers {
   async delete(req, res) {
     try {
       const { id } = req.params;
-
-      console.log({ id });
 
       const categories = await CategoryServices.delete(id);
 

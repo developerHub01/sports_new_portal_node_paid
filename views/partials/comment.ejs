@@ -1,15 +1,21 @@
 <div class="bg-slate-950 p-2 rounded-md flex flex-col gap-2">
   <div class="flex justify-between items-center select-none">
     <div>
-      <p class="mb-1 text-base">FullName</p>
-      <p class="text-sm">userName</p>
+      <p class="mb-1 text-base">
+        <%= user.fullName %>
+      </p>
+      <p class="text-sm">
+        <%= user.email %>
+      </p>
     </div>
-    <form action="">
-      <button class="btn btn-error btn-xs">Delete</button>
-    </form>
+    <% if (typeof isDeleteable !==undefined && isDeleteable){%>
+      <form action="/api/comment/delete/<%= id %>?back=<%= isDashboard? 'dashboard':'news'%>" method="post">
+        <button class="btn btn-error btn-xs" type="submit">Delete</button>
+      </form>
+      <% }%>
   </div>
   <div class="w-20 h-[1px] bg-white"></div>
-  <p class="text-sm">Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur maiores exercitationem nisi corrupti
-    doloremque earum saepe modi dolor accusantium sit error dolorem debitis mollitia minima iusto, neque, eum ullam
-    dolores!</p>
+  <p class="text-sm">
+    <%= content %>
+  </p>
 </div>

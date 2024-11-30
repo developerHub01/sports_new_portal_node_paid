@@ -41,12 +41,14 @@ class UserServices {
 
   async register(payload) {
     try {
+      const userCount = await UserModel.countDocuments();
+
+      if (!userCount) payload["role"] = "super-admin";
+
       const newUser = await UserModel.create(payload);
 
-      return newUser; // Redirect to login after successful registration
+      return newUser;
     } catch (err) {
-      console.log(err);
-
       return "Server error";
     }
   }

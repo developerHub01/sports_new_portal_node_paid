@@ -5,7 +5,7 @@ const { authMiddleware } = require("../middlewares/authMiddleware");
 
 const router = express.Router();
 
-router.post("/login", readTokenMiddleware, AuthControllers.login);
+router.post("/login", AuthControllers.login);
 
 router.get("/logout", authMiddleware, AuthControllers.logout);
 

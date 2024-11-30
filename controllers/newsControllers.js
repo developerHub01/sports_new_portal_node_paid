@@ -5,8 +5,6 @@ class NewsControllers {
     try {
       const { title, banner, category, content } = req.body;
 
-      console.log(req.body);
-
       // Basic validation
       if (!title || !banner || !category || !content) {
         return res.status(400).send("All fields are required.");
@@ -35,8 +33,6 @@ class NewsControllers {
     try {
       const { title, banner, category, content } = req.body;
       const { id } = req.params;
-
-      console.log(req.body);
 
       // Basic validation
       if (!title || !banner || !category || !content) {

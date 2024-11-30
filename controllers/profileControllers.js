@@ -3,18 +3,12 @@ const UserModel = require("../models/userModel");
 
 class ProfileControllers {
   async profileUpdate(req, res) {
-    const { fullName, userName, email, role } = req.body;
+    const payload = req.body;
+
+    delete payload["role"];
+
     try {
-      const user = await UserModel.findById(req.user.userId);
-
-      // Update the user's details
-      user.fullName = fullName || user.fullName;
-      user.userName = userName || user.userName;
-      user.email = email || user.email;
-      user.role = role || user.role;
-
-      // Save the updated user details
-      await user.save();
+      await UserModel.findByIdAndUpdate(req.user.userId, payload);
 
       res.redirect("/profile"); // Redirect back to the profile page
     } catch (err) {

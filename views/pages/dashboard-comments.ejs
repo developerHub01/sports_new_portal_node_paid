@@ -2,14 +2,17 @@
   <div class="w-full h-full flex flex-col gap-3 pb-5">
     <h1 class="text-4xl text-center font-bold text-white p-2">Comments</h1>
     <div class="flex flex-col gap-6">
-      <% for(let i=0; i<100; i++){ %>
-        <div class="shadow-xl">
-          <div class="pb-2">
-            <a href="/" class="text-lg text-white font-semibold underline">News Title goes here</a>
+      <% comments.forEach(function({_id: id, content, user, news, isDeleteable}){ %>
+        <%= isDeleteable %>
+          <div class="shadow-xl">
+            <div class="pb-2">
+              <a href="/news/<%= news._id %>" class="text-lg text-white font-semibold underline">
+                <%= news.title %>
+              </a>
+            </div>
+            <%- include("../partials/comment", {id, user, content, isDeleteable, isDashboard: true}) %>
           </div>
-          <%- include("../partials/comment") %>
-        </div>
-        <% } %>
+          <% }); %>
     </div>
   </div>
   <%- include("../partials/dashboard-wrapper-bottom") %>

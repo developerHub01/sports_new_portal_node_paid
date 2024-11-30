@@ -2699,10 +2699,6 @@ html:has(.drawer-toggle:checked) {
   z-index: 1;
 }
 
-.m-1 {
-  margin: 0.25rem;
-}
-
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
@@ -2714,6 +2710,10 @@ html:has(.drawer-toggle:checked) {
 
 .mb-2 {
   margin-bottom: 0.5rem;
+}
+
+.mb-5 {
+  margin-bottom: 1.25rem;
 }
 
 .mt-2 {
@@ -2780,6 +2780,10 @@ html:has(.drawer-toggle:checked) {
   height: 100%;
 }
 
+.h-36 {
+  height: 9rem;
+}
+
 .h-5 {
   height: 1.25rem;
 }
@@ -2804,10 +2808,6 @@ html:has(.drawer-toggle:checked) {
   height: 100vh;
 }
 
-.max-h-60 {
-  max-height: 15rem;
-}
-
 .max-h-96 {
   max-height: 24rem;
 }
@@ -2816,16 +2816,16 @@ html:has(.drawer-toggle:checked) {
   max-height: 100%;
 }
 
-.min-h-36 {
-  min-height: 9rem;
+.min-h-40 {
+  min-height: 10rem;
 }
 
 .min-h-72 {
   min-height: 18rem;
 }
 
-.min-h-96 {
-  min-height: 24rem;
+.min-h-\[500px\] {
+  min-height: 500px;
 }
 
 .min-h-\[70vh\] {
@@ -2917,14 +2917,14 @@ html:has(.drawer-toggle:checked) {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
-.cursor-pointer {
-  cursor: pointer;
-}
-
 .select-none {
   -webkit-user-select: none;
      -moz-user-select: none;
           user-select: none;
+}
+
+.resize-none {
+  resize: none;
 }
 
 .flex-row {
@@ -2941,10 +2941,6 @@ html:has(.drawer-toggle:checked) {
 
 .place-items-center {
   place-items: center;
-}
-
-.items-start {
-  align-items: flex-start;
 }
 
 .items-center {
@@ -3055,11 +3051,6 @@ html:has(.drawer-toggle:checked) {
   background-color: var(--fallback-p,oklch(var(--p)/var(--tw-bg-opacity, 1)));
 }
 
-.bg-red-500 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(239 68 68 / var(--tw-bg-opacity, 1));
-}
-
 .bg-slate-900 {
   --tw-bg-opacity: 1;
   background-color: rgb(15 23 42 / var(--tw-bg-opacity, 1));
@@ -3135,11 +3126,6 @@ html:has(.drawer-toggle:checked) {
   padding-bottom: 2rem;
 }
 
-.py-1 {
-  padding-top: 0.25rem;
-  padding-bottom: 0.25rem;
-}
-
 .pb-2 {
   padding-bottom: 0.5rem;
 }
@@ -3154,10 +3140,6 @@ html:has(.drawer-toggle:checked) {
 
 .pb-5 {
   padding-bottom: 1.25rem;
-}
-
-.pb-6 {
-  padding-bottom: 1.5rem;
 }
 
 .text-center {
@@ -3342,6 +3324,10 @@ html:has(.drawer-toggle:checked) {
 }
 
 @media (min-width: 640px) {
+  .sm\:grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .sm\:text-5xl {
     font-size: 3rem;
     line-height: 1;

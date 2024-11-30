@@ -8,20 +8,17 @@ const router = express.Router();
 
 router.get(
   "/",
-  readTokenMiddleware,
   navDataCollectorMiddleware,
   ViewsControllers.index
 );
 
 router.get(
   "/login",
-  readTokenMiddleware,
   ViewsControllers.login
 );
 
 router.get(
   "/register",
-  readTokenMiddleware,
   ViewsControllers.register
 );
 
@@ -33,15 +30,13 @@ router.get(
 );
 
 router.get(
-  "/category/:categoryName",
-  authMiddleware,
+  "/category/:category",
   navDataCollectorMiddleware,
   ViewsControllers.category
 );
 
 router.get(
   "/news/:newsId",
-  authMiddleware,
   navDataCollectorMiddleware,
   ViewsControllers.newsById
 );

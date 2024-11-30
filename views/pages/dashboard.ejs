@@ -1,3 +1,46 @@
 <%- include("../partials/dashboard-wrapper-top") %>
-  <h1 class="text-4xl bg-red-500 p-2">Dashboard</h1>
-<%- include("../partials/dashboard-wrapper-bottom") %>
+  <div class="container mx-auto">
+    <h1 class="text-4xl font-bold text-center p-2 mb-5">Sport News</h1>
+    <div class="grid sm:grid-cols-2 gap-5 w-full">
+      <div class="w-full shadow-xl rounded-md p-4 border border-primary min-h-40 flex flex-col justify-center gap-4">
+        <h2 class="text-4xl font-semibold pb-2">
+          <%= newsCount%>
+        </h2>
+        <p class="text-base">News</p>
+        <div>
+          <a href="/dashboard/news" class="btn btn-primary">See more</a>
+        </div>
+      </div>
+      <div class="w-full shadow-xl rounded-md p-4 border border-primary min-h-40 flex flex-col justify-center gap-4">
+        <h2 class="text-4xl font-semibold pb-2">
+          <%= categoryCount%>
+        </h2>
+        <p class="text-base">Categories</p>
+        <div>
+          <a href="/dashboard/categories" class="btn btn-primary">See more</a>
+        </div>
+      </div>
+      <div class="w-full shadow-xl rounded-md p-4 border border-primary min-h-40 flex flex-col justify-center gap-4">
+        <h2 class="text-4xl font-semibold pb-2">
+          <%= userCount%>
+        </h2>
+        <p class="text-base">Users</p>
+      </div>
+      <div class="w-full shadow-xl rounded-md p-4 border border-primary min-h-40 flex flex-col justify-center gap-4">
+        <h2 class="text-4xl font-semibold pb-2">
+          <%= adminCount%>
+        </h2>
+        <p class="text-base">Admins</p>
+      </div>
+      <div class="w-full shadow-xl rounded-md p-4 border border-primary min-h-40 flex flex-col justify-center gap-4">
+        <h2 class="text-4xl font-semibold pb-2">
+          <%= commentCount%>
+        </h2>
+        <p class="text-base">Comments</p>
+        <div>
+          <a href="/dashboard/comments" class="btn btn-primary">See more</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <%- include("../partials/dashboard-wrapper-bottom") %>

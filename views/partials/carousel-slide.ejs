@@ -1,28 +1,29 @@
-<div id="slide<%= id %>" class="carousel-item relative w-full min-h-96">
+<div id="slide<%= id %>" class="carousel-item relative w-full min-h-[500px]">
   <div class="relative w-full h-full p-4 flex justify-start items-center">
     <div class="relative z-20 w-full max-w-2xl">
       <h2 class="text-4xl font-bold text-white pb-4">
         <%= title %>
       </h2>
       <p class="text-lg text-white pb-3 line-clamp-2 overflow-hidden ">
-        <%= description %>
+        <%= content %>
       </p>
-      <a href="<%= link %>" class="btn btn-primary">Read more</a>
+      <a href="/news/<%= _id %>" class="btn btn-primary">Read more</a>
     </div>
     <div class="absolute top-0 left-0 size-full bg-slate-900 opacity-50 pointer-events-none z-10"></div>
-    <img src="<%= banner %>" class="w-full h-full absolute top-0 left-0 size-full object-cover pointer-events-none select-none" />
+    <img src="<%= banner %>"
+      class="w-full h-full absolute top-0 left-0 size-full object-cover pointer-events-none select-none" />
   </div>
   <div class="absolute left-5 right-5 bottom-1 flex -translate-y-1/2 transform justify-between">
     <% if(id===1 ){%>
       <a href="#slide<%= numberOfSlide %>" class="btn btn-circle">❮</a>
-    <% }else {%>
-      <a href="#slide<%= id-1 %>" class="btn btn-circle">❮</a>
-    <% }%>
+      <% }else {%>
+        <a href="#slide<%= id-1 %>" class="btn btn-circle">❮</a>
+        <% }%>
 
-    <% if(id===numberOfSlide ){%>
-      <a href="#slide<%= 1 %>" class="btn btn-circle">❯</a>
-    <% }else {%>
-      <a href="#slide<%= id+1 %>" class="btn btn-circle">❯</a>
-    <% }%>
+          <% if(id===numberOfSlide ){%>
+            <a href="#slide<%= 1 %>" class="btn btn-circle">❯</a>
+            <% }else {%>
+              <a href="#slide<%= id+1 %>" class="btn btn-circle">❯</a>
+              <% }%>
   </div>
 </div>

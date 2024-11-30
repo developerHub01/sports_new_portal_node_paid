@@ -52,14 +52,16 @@ const navDataCollectorMiddleware = async (req, res, next) => {
 
   req.data = data;
 
-  if (!req.user || !req.user.userId) return next();
-
   try {
     const sportsCategoryList = await CategoryServices.index();
 
+    req.data = { ...req.data, sportsCategoryList };
+
+    if (!req.user || !req.user.userId) return next();
+
     const userData = await UserModel.findById(req.user.userId);
 
-    req.data = { ...data, user: userData, sportsCategoryList };
+    req.data = { ...req.data, user: userData };
 
     return next();
   } catch (error) {

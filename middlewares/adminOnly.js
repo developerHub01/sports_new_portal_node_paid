@@ -2,11 +2,11 @@ const jwt = require("jsonwebtoken");
 const Constant = require("../constant");
 const UserModel = require("../models/userModel");
 
-const readTokenMiddleware = async (req, res, next) => {
+const adminOnlyMiddleware = async (req, res, next) => {
   const token = req.cookies.authToken;
 
   if (!token) {
-    return next();
+    return res.redirect("/"); // Redirect to login if not authenticated
   }
 
   try {
@@ -14,6 +14,10 @@ const readTokenMiddleware = async (req, res, next) => {
     req.user = decoded;
 
     const userData = await UserModel.findById(decoded.userId);
+
+    if (!userData || !["admin", "super-admin"].includes(userData.role)) {
+      return res.redirect("/");
+    }
 
     req.user = { ...req.user, role: userData.role };
 
@@ -24,4 +28,4 @@ const readTokenMiddleware = async (req, res, next) => {
   }
 };
 
-module.exports = { readTokenMiddleware };
+module.exports = { adminOnlyMiddleware };
