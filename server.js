@@ -6,6 +6,7 @@ const newsRoutes = require("./routes/newsRoutes");
 const userRoutes = require("./routes/userRoutes");
 const categoryRoutes = require("./routes/categoryRoutes");
 const commentRoutes = require("./routes/commentRoutes");
+const reportRoutes = require("./routes/reportRoutes");
 const aboutUsRoute = require("./routes/aboutUsRoute");
 const dashboardViewsRoutes = require("./routes/dashboardViewsRoutes");
 const cookieParser = require("cookie-parser");
@@ -43,9 +44,13 @@ app.use("/api/news", newsRoutes);
 app.use("/api/user", userRoutes);
 app.use("/api/category", categoryRoutes);
 app.use("/api/comment", commentRoutes);
+app.use("/api/report", reportRoutes);
 app.use("/api/about-us", aboutUsRoute);
 
+const PORT = 5173;
+
 // Start the server
-const server = app.listen(0, () => {
-  console.log(`Server is running at port ${server.address().port}`);
+app.listen(PORT, () => {
+  // console.log(`Server is running at port ${server.address().port}`);
+  console.log(`Server is running at port ${PORT}`);
 });

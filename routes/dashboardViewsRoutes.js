@@ -69,4 +69,11 @@ router.get(
   DashboardViewsControllers.comments
 );
 
+router.get(
+  "/reports",
+  authMiddleware,
+  adminOnlyMiddleware,
+  DashboardViewsControllers.reports
+);
+
 module.exports = router;

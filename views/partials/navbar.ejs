@@ -26,6 +26,24 @@
         </div>
       </div>
       <a href="/about-us" class="btn btn-ghost btn-sm">About us</a>
+      <!-- The button to open modal -->
+      <div id="search-block">
+        <label for="search-modal" class="btn btn-sm">Search</label>
+
+        <!-- Put this part before </body> tag -->
+        <input type="checkbox" id="search-modal" class="modal-toggle" />
+        <div class="modal" role="dialog" id="search-dialog">
+          <div class="modal-box">
+            <div class="w-full flex items-center gap-3">
+              <input type="text" placeholder="Search here..." class="input input-bordered w-full" name="search-term"
+                id="search-input" />
+              <button class="btn btn-primary" id="search-btn">Search</button>
+            </div>
+          </div>
+          <label class="modal-backdrop" for="search-modal">Close</label>
+        </div>
+      </div>
+
     </div>
     <% } %>
       <div class="navbar-end">
@@ -55,3 +73,28 @@
                 <% } %>
             </div>
           </div>
+
+          <script>
+
+            const searchBlock = document.querySelector("#search-block")
+
+            if (location.pathname !== "/") {
+              searchBlock.classList.add("hidden")
+            } else {
+              searchBlock.classList.remove("hidden")
+            }
+
+            const searchBtn = document.querySelector("#search-btn")
+            const searchInput = document.querySelector("#search-input")
+
+            searchBtn.addEventListener("click", function (event) {
+
+              const searchTerm = searchInput.value
+
+              const searchPath = `?search=${searchTerm}`;
+
+
+              window.location.href = searchPath
+            })
+
+          </script>

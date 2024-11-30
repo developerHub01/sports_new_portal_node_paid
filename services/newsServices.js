@@ -20,6 +20,34 @@ class NewsServices {
     }
   }
 
+  async search(searchText) {
+    try {
+      const regex = new RegExp(searchText, "i");
+
+      console.log({ searchText });
+
+      return (
+        await NewsModel.find({
+          $or: [
+            { title: { $regex: regex } },
+            { content: { $regex: regex } },
+            { banner: { $regex: regex } }, // If banner contains text
+          ],
+        })
+          .populate({
+            path: "category",
+            select: "-_id name",
+          })
+          .lean()
+      ).map((news) => ({
+        ...news,
+        category: news.category.name,
+      }));
+    } catch (e) {
+      return [];
+    }
+  }
+
   async newsById(id) {
     try {
       return await NewsModel.findById(id)

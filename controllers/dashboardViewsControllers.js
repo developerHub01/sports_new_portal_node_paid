@@ -2,8 +2,10 @@ const CategoryModel = require("../models/categoryModel");
 const NewsModel = require("../models/newsModel");
 const UserModel = require("../models/userModel");
 const CommentModel = require("../models/commentModel");
+const ReportModel = require("../models/reportModel");
 const CategoryServices = require("../services/categoryServices");
 const CommentServices = require("../services/commentServices");
+const ReportServices = require("../services/reportServices");
 const NewsServices = require("../services/newsServices");
 const UserServices = require("../services/userServices");
 const AboutUsServices = require("../services/aboutUsServices");
@@ -108,6 +110,16 @@ class DashboardViewsControllers {
     }));
 
     res.render("pages/dashboard-comments", { comments, role });
+  }
+
+  async reports(req, res) {
+    const { role } = req.user;
+    const reports = (await ReportServices.index()).map((report) => ({
+      ...report,
+      isDeleteable: true,
+    }));
+
+    res.render("pages/dashboard-reports", { reports, role });
   }
 }
 

@@ -1,15 +1,15 @@
 <%- include("../partials/dashboard-wrapper-top") %>
   <div class="w-full h-full flex flex-col gap-3 pb-5">
-    <h1 class="text-4xl text-center font-bold text-white p-2">Comments</h1>
+    <h1 class="text-4xl text-center font-bold text-white p-2">Reports</h1>
     <div class="flex flex-col gap-6">
-      <% comments.forEach(function({_id: id, content, user, news, isDeleteable}){ %>
+      <% reports.forEach(function({_id: id, content, user, news, isDeleteable}){ %>
           <div class="shadow-xl">
             <div class="pb-2">
               <a href="/news/<%= news._id %>" class="text-lg text-white font-semibold underline">
                 <%= news.title %>
               </a>
             </div>
-            <%- include("../partials/comment", {id, user, content, isDeleteable, isDashboard: true}) %>
+            <%- include("../partials/report", {id, user, content, isDeleteable, isDashboard: true}) %>
           </div>
           <% }); %>
     </div>

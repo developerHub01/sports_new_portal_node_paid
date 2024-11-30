@@ -22,6 +22,24 @@
                 <h1 class="text-2xl">
                   <%= comments.length %> Comments
                 </h1>
+                <div class="flex justify-center items-center">
+                  <label for="addAdmin" class="btn btn-primary mx-auto">Report</label>
+
+                  <!-- Put this part before </body> tag -->
+                  <input type="checkbox" id="addAdmin" class="modal-toggle" />
+                  <div class="modal" role="dialog">
+                    <div class="modal-box">
+                      <h1 class="text-xl text-center font-bold text-white p-4">Where the problem</h1>
+                      <form action="/api/report" method="post" class="space-y-2">
+                        <input type="text" value="<%= news._id %>" name="news" hidden>
+                        <textarea class="textarea textarea-bordered w-full h-36 resize-none text-base"
+                          placeholder="Write your problem" name="content" required></textarea>
+                        <button type="submit" class="btn btn-primary">Repot problem</button>
+                      </form>
+                    </div>
+                    <label class="modal-backdrop" for="addAdmin">Close</label>
+                  </div>
+                </div>
               </div>
               <% if (user) { %>
                 <form action="/api/comment" method="post" class="space-y-2">

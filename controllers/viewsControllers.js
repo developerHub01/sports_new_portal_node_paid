@@ -6,10 +6,15 @@ const AboutUsServices = require("../services/aboutUsServices");
 
 class ViewsControllers {
   async index(req, res) {
-    console.log("====================");
+    const { search } = req.query;
 
     let { data } = req;
-    const newsList = await NewsServices.index();
+    let newsList = [];
+
+    console.log({search});
+
+    if (search) newsList = await NewsServices.search(search);
+    else newsList = await NewsServices.index();
 
     const carouselSlides = newsList.slice(0, 3);
 

@@ -1,0 +1,21 @@
+<div class="bg-slate-950 p-2 rounded-md flex flex-col gap-2">
+  <div class="flex justify-between items-center select-none">
+    <div>
+      <p class="mb-1 text-base">
+        <%= user.fullName %>
+      </p>
+      <p class="text-sm">
+        <%= user.email %>
+      </p>
+    </div>
+    <% if (typeof isDeleteable !==undefined && isDeleteable){%>
+      <form action="/api/report/delete/<%= id %>?back=<%= isDashboard? 'dashboard':'news'%>" method="post">
+        <button class="btn btn-error btn-xs" type="submit">Delete</button>
+      </form>
+      <% }%>
+  </div>
+  <div class="w-20 h-[1px] bg-white"></div>
+  <p class="text-sm">
+    <%= content %>
+  </p>
+</div>
